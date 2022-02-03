@@ -36,6 +36,11 @@ public class CardManager : MonoBehaviour
     {
         GameManager.inst.isCardClickable = false;
 
+        for(int i = 0; i < cards.Length; i++)
+        {
+            cards[i].btn.interactable = false;
+        }
+
         for (int i = 0; i <= GameManager.inst.currentRound; i++)
         {
             yield return new WaitForSecondsRealtime(1);
@@ -44,16 +49,21 @@ public class CardManager : MonoBehaviour
                 int randomNum = Random.Range(0, cards.Length);
                 GameManager.inst.cardNumList.Add(randomNum);
 
-                cards[randomNum].PlayClickedAnim();
+                cards[randomNum].PlayCardBlinkAnim();
             }
             else
             {
-                cards[GameManager.inst.cardNumList[i]].PlayClickedAnim();
+                cards[GameManager.inst.cardNumList[i]].PlayCardBlinkAnim();
             }
         }
         roundStartedCoroutine = null;
 
         GameManager.inst.isCardClickable = true;
+
+        for (int i = 0; i < cards.Length; i++)
+        {
+            cards[i].btn.interactable = true;
+        }
     }
 
     private void CardCorrectCheck (int cardNum)
@@ -76,8 +86,6 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong");
-
             GameManager.inst.ResetGame();
         }
     }

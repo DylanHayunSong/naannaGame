@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    private Button btn;
+    public Button btn;
     private Image btnImg;
     private Coroutine clickedAnimRoutine = null;
 
@@ -32,24 +32,17 @@ public class Card : MonoBehaviour
     {
         if(GameManager.inst.isCardClickable == true)
         {
-            PlayClickedAnim();
-
             GameManager.inst.OnCardClicked(cardNum);
         }
     }
 
-    public void PlayClickedAnim ()
+    public void PlayCardBlinkAnim ()
     {
-        if (clickedAnimRoutine == null)
-        {
-            clickedAnimRoutine = StartCoroutine(ClickedAnim());
-        }
+        StartCoroutine(ClickedAnim());
     }
 
     private IEnumerator ClickedAnim ()
     {
-        GameManager.inst.isCardClickable = false;
-
         float duration = 1;
         float time = 0;
 
@@ -73,7 +66,5 @@ public class Card : MonoBehaviour
 
         btnImg.color = defaultColor;
         clickedAnimRoutine = null;
-
-        GameManager.inst.isCardClickable = true;
     }
 }
