@@ -8,12 +8,13 @@ public class GameManager : SingletonBehaviour<GameManager>
     public int currentOrder = 0;
     public int currentRound = 0;
     public bool isCardClickable = true;
+    public bool isSoundOn = true;
 
     public List<int> cardNumList = new List<int>();
 
     public Action<int> cardClickedAction;
     public Action RoundStartAction;
-
+    
     protected override void Init ()
     {
         base.Init();
