@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngameSoundBtn : MonoBehaviour
+public class InGameSoundBtn : MonoBehaviour
 {
     private Image btnImg;
     private Button btn;
@@ -23,7 +23,7 @@ public class IngameSoundBtn : MonoBehaviour
 
     private void OnClick ()
     {
-        btnImg.sprite = GameManager.inst.isSoundOn ? soundOffImg : soundOnImg;
-        GameManager.inst.isSoundOn = !GameManager.inst.isSoundOn;
+        btnImg.sprite = GameManager.inst.IsSoundOn ? soundOffImg : soundOnImg;
+        GameManager.inst.IsSoundOn = !GameManager.inst.IsSoundOn;
     }
 }
